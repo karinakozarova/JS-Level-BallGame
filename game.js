@@ -32,6 +32,12 @@ function myBallDraw() {
 		canvas.style.padding = "120px 500px 50px 200px";
 	}
 
+	function changeBackground(){
+		ctx.fillStyle = ball.color;
+		ctx.fillRect(0, 0, canvas.width, canvas.height);
+		alert("changed");
+	}
+	
 	var ball = {
 	  x: 100,
 	  y: 100,
@@ -62,9 +68,8 @@ function myBallDraw() {
 		} else {
 			lives--;
 		}
-
+		setTimeout(changeBackground, 3000)
 		if(lives < 1){
-			//blabasd.dd
 			location.reload();
 			alert("You died");
 		}
