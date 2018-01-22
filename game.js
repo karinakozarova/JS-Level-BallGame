@@ -37,23 +37,26 @@
 	function changeBackground(){
 		ctx.fillStyle = ball.color;
 		ctx.fillRect(0, 0, canvas.width, canvas.height);
-		setTimeout(2000);
 		//alert("changed");
 	}
 
-	
+	function changeVelocity(){
+		ball.vx *= 1.4;
+		ball.vy *= 1.4;
+		ball.vy *= -1;
+		ball.vx *= -1;
+	}
+
 	var ball = {
 	  x: 100,
 	  y: 100,
 	  vx: 5,
 	  vy: 1,
-	  radius: 100,
+	  radius: 80,
 	  color: 'blue',
 	  is_mouse_over: function(x,y) {
-	  	// return (x -radius) < xParam < (x+radius) 
-	  	// 	&& ((y-radius) < yParam < (y+radius));
-	  	return ((this.x -radius) < x < (this.x+radius)) 
-	  		&& ((this.y-radius) < y < (this.y+radius));
+	  	return ((this.x - radius) < x < (this.x + radius)) 
+	  		&& ((this.y - radius) < y < (this.y + radius));
 	  },
 	  draw: function() {
 	    ctx.beginPath();
@@ -66,16 +69,17 @@
 
 	canvas.addEventListener('click', function(e){
 		if((e.x - 15 < ball.x + ball.radius && e.x - 15 > ball.x - ball.radius)
-		&& (e.y - 15 < ball.y + ball.radius && e.y - 15 > ball.y - ball.radius)
-			){
+		&& (e.y - 15 < ball.y + ball.radius && e.y - 15 > ball.y - ball.radius)){
 			ball.radius *= .8;
-		streak++;
+			streak++;
+			changeVelocity();
 		} else {
 			lives--;
 			streak = 0;
+			ball.vx *= 0.8;
 		}
 		//setTimeout(function (){	raf = window.requestAnimationFrame(changeBackground);}, 3000);
-		if(lives < 1){
+		if(lives < 0){
 			location.reload();
 			alert("You died");
 		}
@@ -87,3 +91,5 @@
 	
 }
 myBallDraw();
+
+
