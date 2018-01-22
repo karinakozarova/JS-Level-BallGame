@@ -79,7 +79,7 @@
 			location.reload();
 			alert("You died");
 		}
-		document.getElementById("score").innerHTML = "Lives:" + " " + lives + " Streak: " + streak;
+		document.getElementById("stats").innerHTML = "Lives:" + " " + lives + " Streak: " + streak;
 
 	});
 	moveCanvas();
