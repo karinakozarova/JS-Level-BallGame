@@ -27,7 +27,10 @@ function myBallDraw() {
 	}
 
 
-
+	function moveCanvas()
+	{
+		canvas.style.padding = "120px 500px 50px 200px";
+	}
 
 	var ball = {
 	  x: 100,
@@ -68,5 +71,6 @@ function myBallDraw() {
 	});
 
 	draw();
+	moveCanvas();
 }
 myBallDraw();
