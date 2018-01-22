@@ -1,4 +1,4 @@
-function myBallDraw() {
+ function myBallDraw() {
 	var canvas = document.getElementById('tutorial');
 	if (canvas.getContext) {
 	  var ctx = canvas.getContext('2d');
@@ -9,7 +9,6 @@ function myBallDraw() {
 
 	function draw() {
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
-
 		ball.draw();
 		ball.x += ball.vx;
 		ball.y += ball.vy;
@@ -30,7 +29,9 @@ function myBallDraw() {
 
 	function moveCanvas()
 	{
-		//canvas.style.padding = "120px 500px 50px 200px";
+		var div = document.getElementById('div');
+		div.style.padding = "500px";
+		
 	}
 
 	function changeBackground(){
@@ -39,11 +40,7 @@ function myBallDraw() {
 		//alert("changed");
 	}
 
-	/*function revertBackground(){
-		ctx.fillStyle = "white";
-		ctx.fillRect(0, 0, canvas.width, canvas.height);
-	}
-	*/
+	
 	var ball = {
 	  x: 100,
 	  y: 100,
@@ -74,14 +71,14 @@ function myBallDraw() {
 		} else {
 			lives--;
 		}
-		setTimeout(function (){	 	 raf = window.requestAnimationFrame(changeBackground); }, 3000)
+		//setTimeout(function (){	raf = window.requestAnimationFrame(changeBackground);}, 3000)
 		if(lives < 1){
 			location.reload();
 			alert("You died");
 		}
 	});
-
-	draw();
 	moveCanvas();
+	draw();
+	
 }
 myBallDraw();
