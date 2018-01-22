@@ -29,8 +29,8 @@
 
 	function moveCanvas()
 	{
-	/*	var div = document.getElementById('div');
-		div.style.padding = "500px";*/
+		var div = document.getElementById('div');
+		div.style.padding = "500px";
 		
 	}
 
@@ -75,7 +75,7 @@
 			lives--;
 		}
 		//setTimeout(function (){	raf = window.requestAnimationFrame(changeBackground);}, 3000);
-		if(lives < 1){
+		if(lives < 0){
 			location.reload();
 			alert("You died");
 		}

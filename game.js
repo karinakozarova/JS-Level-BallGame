@@ -6,7 +6,7 @@
 
 	var raf;
 	var lives = 3;
-
+	var streak = 0;
 	function draw() {
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		ball.draw();
@@ -37,7 +37,7 @@
 	function changeBackground(){
 		ctx.fillStyle = ball.color;
 		ctx.fillRect(0, 0, canvas.width, canvas.height);
-		setTimeout(1000);
+		setTimeout(2000);
 		//alert("changed");
 	}
 
@@ -65,20 +65,22 @@
 	};
 
 	canvas.addEventListener('click', function(e){
-		if((e.x - 10 < ball.x + ball.radius && e.x - 10 > ball.x - ball.radius)
-		&& (e.y - 10 < ball.y + ball.radius && e.y - 10 > ball.y - ball.radius)
+		if((e.x - 15 < ball.x + ball.radius && e.x - 15 > ball.x - ball.radius)
+		&& (e.y - 15 < ball.y + ball.radius && e.y - 15 > ball.y - ball.radius)
 			){
-			lives += 0.1;
 			ball.radius *= .8;
+		streak++;
 		} else {
-			ball.radius *= 1.8;
 			lives--;
+			streak = 0;
 		}
 		//setTimeout(function (){	raf = window.requestAnimationFrame(changeBackground);}, 3000);
 		if(lives < 1){
 			location.reload();
 			alert("You died");
 		}
+		document.getElementById("score").innerHTML = "Lives:" + " " + lives + " Streak: " + streak;
+
 	});
 	moveCanvas();
 	draw();
