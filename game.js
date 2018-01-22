@@ -31,6 +31,7 @@ function myBallDraw() {
 	{
 		var div = document.getElementById('div');
 		div.style.padding = "500px";
+		
 	}
 
 	function changeBackground(){
@@ -75,8 +76,8 @@ function myBallDraw() {
 			alert("You died");
 		}
 	});
-
-	draw();
 	moveCanvas();
+	draw();
+	
 }
 myBallDraw();
