@@ -29,7 +29,8 @@ function myBallDraw() {
 
 	function moveCanvas()
 	{
-		canvas.style.padding = "120px 500px 50px 200px";
+		var div = document.getElementById('div');
+		div.style.padding = "500px";
 	}
 
 	var ball = {
