@@ -1,14 +1,18 @@
+  setInterval('window.location.reload()', 60000);
+
  function myBallDraw() {
 	var canvas = document.getElementById('tutorial');
 	if (canvas.getContext) {
 	  var ctx = canvas.getContext('2d');
 	}
-	 
+
+	var clicks;
 	var raf;
 	var lives = 3;
 	var streak = 0;
 	function draw() {
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
+		
 		ball.draw();
 		ball.x += ball.vx;
 		ball.y += ball.vy;
@@ -27,17 +31,20 @@
 	}
 
 
-	function moveCanvas()
+/*	function moveCanvas()
 	{
-		/*var div = document.getElementById('div');
-		div.style.padding = "100px";*/
+		var div = document.getElementById('div');
+		div.style.padding = "100px";
 		
 	}
-
+*/
+	function randomIntFromInterval(min,max){
+	    return Math.floor(Math.random()*(max-min+1)+min);
+	}
 
 	function changeVelocity(){
-		ball.vx *= 1.4;
-		ball.vy *= 1.4;
+		ball.vx *= randomIntFromInterval(1,5);
+		ball.vy *= randomIntFromInterval(1,5);
 		ball.vy *= -1;
 		ball.vx *= -1;
 	}
@@ -48,7 +55,7 @@
 	  vx: 5,
 	  vy: 1,
 	  radius: 80,
-	  color: 'blue',
+	  color: 'yellow',
 	  is_mouse_over: function(x,y) {
 	  	return ((this.x - radius) < x < (this.x + radius)) 
 	  		&& ((this.y - radius) < y < (this.y + radius));
@@ -67,8 +74,9 @@
 		&& (e.y < ball.y + ball.radius && e.y > ball.y - ball.radius)){
 			ball.radius *= .8;
 			streak++;
+			clicks++;
 			changeVelocity();
-			ball.color = "green";
+			ball.color = "white";
 		} else {
 			lives--;
 			streak = 0;
@@ -76,15 +84,18 @@
 			ball.color = "red";
 		}
 		if(streak % 3 == 0) lives++;
-		if(lives <= 0){
+
+
+		/*if(lives <= 0){
 			location.reload();
 			alert("You died");
 		}
 		document.getElementById("stats").innerHTML = "Lives:" + " " + lives + " Streak: " + streak;
+		*/
 
 	});
-	moveCanvas();
-	canvas.style.backgroundImage = "url(http://i.imgur.com/yf6d9SX.jpg)";
+	//moveCanvas();
+	canvas.style.backgroundImage = "url(https://sports.cbsimg.net/images/nhl/blog/NHL_Patrick_Kane_Investigation.jpg)";
 	draw();
 	
 }
