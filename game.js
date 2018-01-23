@@ -3,14 +3,7 @@
 	if (canvas.getContext) {
 	  var ctx = canvas.getContext('2d');
 	}
-
-	var background = new Image();
-		background.src = "http://i.imgur.com/yf6d9SX.jpg";
-
-		background.onload = function(){
-		    ctx.drawImage(background,0,0);   
-		}
-
+	 
 	var raf;
 	var lives = 3;
 	var streak = 0;
@@ -89,6 +82,7 @@
 
 	});
 	moveCanvas();
+	canvas.style.backgroundImage = "url(http://i.imgur.com/yf6d9SX.jpg)";
 	draw();
 	
 }
