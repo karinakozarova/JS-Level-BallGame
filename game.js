@@ -68,10 +68,12 @@
 			ball.radius *= .8;
 			streak++;
 			changeVelocity();
+			ball.color = "green";
 		} else {
 			lives--;
 			streak = 0;
 			ball.vx *= 0.8;
+			ball.color = "red";
 		}
 		if(streak % 3 == 0) lives++;
 		if(lives <= 0){
