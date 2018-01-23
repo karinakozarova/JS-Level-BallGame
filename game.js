@@ -4,6 +4,13 @@
 	  var ctx = canvas.getContext('2d');
 	}
 
+	var background = new Image();
+		background.src = "http://i.imgur.com/yf6d9SX.jpg";
+
+		background.onload = function(){
+		    ctx.drawImage(background,0,0);   
+		}
+
 	var raf;
 	var lives = 3;
 	var streak = 0;
@@ -29,8 +36,8 @@
 
 	function moveCanvas()
 	{
-	/*	var div = document.getElementById('div');
-		div.style.padding = "500px";*/
+		/*var div = document.getElementById('div');
+		div.style.padding = "100px";*/
 		
 	}
 
@@ -63,8 +70,8 @@
 	};
 
 	canvas.addEventListener('click', function(e){
-		if((e.x - 15 < ball.x + ball.radius && e.x - 15 > ball.x - ball.radius)
-		&& (e.y - 15 < ball.y + ball.radius && e.y - 15 > ball.y - ball.radius)){
+		if((e.x  < ball.x + ball.radius && e.x > ball.x - ball.radius)
+		&& (e.y < ball.y + ball.radius && e.y > ball.y - ball.radius)){
 			ball.radius *= .8;
 			streak++;
 			changeVelocity();
@@ -86,5 +93,3 @@
 	
 }
 myBallDraw();
-
-
