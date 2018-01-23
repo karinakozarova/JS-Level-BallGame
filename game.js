@@ -34,11 +34,6 @@
 		
 	}
 
-	function changeBackground(){
-		ctx.fillStyle = ball.color;
-		ctx.fillRect(0, 0, canvas.width, canvas.height);
-		//alert("changed");
-	}
 
 	function changeVelocity(){
 		ball.vx *= 1.4;
@@ -78,8 +73,8 @@
 			streak = 0;
 			ball.vx *= 0.8;
 		}
-		//setTimeout(function (){	raf = window.requestAnimationFrame(changeBackground);}, 3000);
-		if(lives < 0){
+		if(streak % 3 == 0) lives++;
+		if(lives <= 0){
 			location.reload();
 			alert("You died");
 		}
