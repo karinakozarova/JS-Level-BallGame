@@ -8,7 +8,6 @@ function myBallDraw() {
 
 	var clicks;
 	var raf;
-	var lives = 3;
 	var streak = 0;
 	function draw() {
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -30,10 +29,8 @@ function myBallDraw() {
 	  raf = window.requestAnimationFrame(draw);
 	}	
 
-	function setDiv()
-	{
-		
-	}
+	var p = document.createElement('p');
+	p.id = 'stats';
 
 	function moveCanvas(padding)
 	{
@@ -78,8 +75,9 @@ function myBallDraw() {
 	};
 
 	canvas.addEventListener('click', function(e){
-		if((e.x  < ball.x + ball.radius && e.x > ball.x - ball.radius)
-		&& (e.y < ball.y + ball.radius && e.y > ball.y - ball.radius)){
+		var change = (10*ball.radius)/100;
+		if((e.x - change < ball.x + ball.radius && e.x - change > ball.x - ball.radius)
+		&& (e.y - change < ball.y + ball.radius && e.y - change > ball.y - ball.radius)){
 			console.log("if");
 			ball.radius *= .8;
 			streak++;
@@ -87,24 +85,21 @@ function myBallDraw() {
 			changeVelocity();
 			ball.color = "white";
 		} else {
-			lives--;
 			console.log("else");
 			streak = 0;
 			ball.vx *= 0.8;
 			ball.color = "red";
 		}
-		if(streak % 3 == 0) lives++;
 
-
-		/*if(lives <= 0){
+		if(streak == 3){
 			location.reload();
-			alert("You died");
+			alert("You win!");
 		}
-		document.getElementById("stats").innerHTML = "Lives:" + " " + lives + " Streak: " + streak;
-		*/
+
+		document.getElementById("stats").innerHTML = " Streak: " + streak;
 
 	});
-	setInterval(moveCanvas(randomIntFromInterval(1, 500)), 1000);
+	//setInterval(moveCanvas(randomIntFromInterval(1, 500)), 1000);
 	canvas.style.backgroundImage = "url(https://sports.cbsimg.net/images/nhl/blog/NHL_Patrick_Kane_Investigation.jpg)";
 	draw();
 	
