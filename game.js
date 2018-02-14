@@ -99,7 +99,9 @@ function myBallDraw() {
         document.getElementById("stats").innerHTML = " Streak: " + streak;
 
     });
-    //setInterval(moveCanvas(randomIntFromInterval(1, 500)), 1000);
+    setInterval(function() {
+                    moveCanvas(randomIntFromInterval(1, 500)); 
+                    },1000);
     canvas.style.backgroundImage = "url(https://sports.cbsimg.net/images/nhl/blog/NHL_Patrick_Kane_Investigation.jpg)";
     draw();
 
